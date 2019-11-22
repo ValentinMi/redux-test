@@ -2,6 +2,7 @@ import * as usersConsts from "../consts/users.consts";
 
 const initState = {
   list: [],
+  currentUser: {},
   isLoading: undefined,
   error: null
 };
