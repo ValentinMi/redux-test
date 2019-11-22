@@ -24,3 +24,12 @@ export const removeUser = userId => async dispatch => {
   // Refetch
   dispatch({ type: usersConsts.GET_USERS, payload: fetchUsers() });
 };
+
+export const selectUser = user => dispatch => {
+  dispatch({
+    type: usersConsts.SELECT_USER,
+    payload: {
+      user
+    }
+  });
+};

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { getUsers, removeUser } from "../../actions/users.actions";
+import { getUsers, removeUser, selectUser } from "../../actions/users.actions";
 import { List, Card, Button, Spin } from "antd";
 
 const UsersList = ({ history }) => {
@@ -27,7 +27,16 @@ const UsersList = ({ history }) => {
                 cover={<img alt="Profil" src={user.avatarUrl} />}
               >
                 <Button
-                  onClick={() => history.push(`/users/${user.id}`)}
+                  onClick={() => {
+                    dispatch(selectUser(user));
+                    history.push(`/users/${user.id}`);
+                  }}
+                  type="default"
+                >
+                  Voir
+                </Button>
+                <Button
+                  onClick={() => history.push(`/users/edit/${user.id}`)}
                   type="primary"
                 >
                   Modifier

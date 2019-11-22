@@ -32,6 +32,9 @@ const users = (state = initState, action) => {
     case usersConsts.DELETE_USER_REJECTED:
       return { ...state, isLoading: false, error: payload.message };
 
+    case usersConsts.SELECT_USER:
+      return { ...state, currentUser: payload.user };
+
     default:
       return state;
   }
