@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../actions/users.actions";
 import { Form, Input, Button } from "antd";
 
 const UserForm = ({ history }) => {
   const [newUser, setNewUser] = useState({});
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -22,11 +24,7 @@ const UserForm = ({ history }) => {
   };
 
   const handleSubmit = () => {
-    try {
-      axios.post("http://goweb.eu.ngrok.io/users", newUser);
-    } catch (error) {
-      throw error;
-    }
+    dispatch(addUser(newUser));
     history.push("/users");
   };
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../actions/users.actions";
+import { getUsers, removeUser } from "../../actions/users.actions";
 import { List, Card, Button, Spin } from "antd";
 
 const UsersList = ({ history }) => {
@@ -32,7 +32,10 @@ const UsersList = ({ history }) => {
                 >
                   Modifier
                 </Button>
-                <Button /* onClick={() => deleteUser(user.id)} */ type="danger">
+                <Button
+                  onClick={() => dispatch(removeUser(user.id))}
+                  type="danger"
+                >
                   Supprimer
                 </Button>
               </Card>
